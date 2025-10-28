@@ -1,0 +1,5 @@
+.centrar-componente{
+    align-items: center; /* Centrar horizontalmente */
+    display: flex; /* Utilizamos flexbox para centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente con flexbox */
+}

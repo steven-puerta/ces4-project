@@ -1,0 +1,11 @@
+<div class="centrar">
+    <div>
+        <div *ngIf="usuarioActual==null" class="centrar-componente">
+            <button mat-raised-button (click)="login()">
+                <mat-icon>person</mat-icon>
+                Ingresar
+            </button>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

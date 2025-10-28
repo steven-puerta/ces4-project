@@ -1,0 +1,24 @@
+.centrar{
+    align-items: center; /* Centrar horizontalmente */
+    display: flex; /* Utilizamos flexbox para centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente con flexbox */
+    height: 100vh; /* Ancho completo */
+    background: linear-gradient(to right, rgb(255, 255, 255, 0.5), rgb(255, 255, 255, 0.8), rgb(255, 255, 255, 0.8), rgb(255, 255, 255, 0.8), rgb(255, 255, 255, 0.5));
+    animation-name: appear;
+    animation-duration: 1s;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.centrar-componente{
+    align-items: center; /* Centrar horizontalmente */
+    display: flex; /* Utilizamos flexbox para centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente con flexbox */
+}
