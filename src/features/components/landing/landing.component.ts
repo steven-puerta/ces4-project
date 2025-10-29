@@ -14,6 +14,26 @@ export class LandingComponent {
 
   constructor (private router: Router) {}
 
+  navegarTipoFestivo() {
+    this.router.navigate(['/tipo-festivo']);
+  }
+
+  navegarFestivo() {
+    this.router.navigate(['/festivo']);
+  }
+
+  navegarPais() {
+    this.router.navigate(['/pais']);
+  }
+
+  navegarCalendario() {
+    this.router.navigate(['/calendario']);
+  }
+
+  navegarTipo() {
+    this.router.navigate(['/tipo']);
+  }
+
   navegarAutores() {
     this.router.navigate(['/autores']);
   }
