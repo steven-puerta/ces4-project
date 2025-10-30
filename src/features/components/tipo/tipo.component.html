@@ -1,1 +1,31 @@
-<p>tipo works!</p>
+<div style="width: 80vw;">
+    <button mat-raised-button (click)="navegarAtras()" >
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <br>
+    <h1>Tipo</h1>
+    <div>
+        <mat-form-field style="width: 87%;">
+            <mat-label>Buscar</mat-label>
+            <input matInput [(ngModel)]="textoBusqueda" >
+        </mat-form-field>
+        <button mat-stroked-button color="primary" (click)="buscar()" style="margin-left: 10px;" >Buscar</button>
+    </div>
+    <div class="triple-column">
+        <div class="column">
+            <button mat-raised-button style="width: 150px;" >Agregar</button>
+        </div>
+        <div class="column">
+            <button mat-raised-button style="width: 150px;" >Editar</button>
+        </div>
+        <div class="column">
+            <button mat-raised-button style="width: 150px;" >Eliminar</button>
+        </div>
+    </div>
+    <br>
+    <ngx-datatable class="dark" [rows]="tipos" [columns]="columnas"
+    [headerHeight]="50" [footerHeight]="50" [limit]="10" [rowHeight]="'auto'"
+    [columnMode]="modoColumna.force"
+    [selectionType]="tipoSeleccion.single" (activate)="escoger($event)"
+    ></ngx-datatable>
+</div>

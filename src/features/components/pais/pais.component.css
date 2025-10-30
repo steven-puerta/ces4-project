@@ -1,0 +1,10 @@
+.triple-column {
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+}
+
+.column {
+    align-items: center; /* Centrar horizontalmente */
+    display: flex; /* Utilizamos flexbox para centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente con flexbox */
+}
