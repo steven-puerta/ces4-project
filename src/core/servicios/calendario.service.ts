@@ -15,12 +15,12 @@ export class CalendarioService {
     this.url = `${environment.urlBase}calendario/`;
   }
 
-  public listar (): Observable<Calendario[]> {
-    return this.http.get<Calendario[]>(`${this.url}listar/1/2025`);
+  public generar (pais: string = '1', anio: string = '2025'): Observable<boolean> {
+    return this.http.get<boolean>(`${this.url}generar/${pais}/${anio}`);
   }
 
-  public buscar (dato: string): Observable<Calendario[]> {
-    return this.http.get<Calendario[]>(`${this.url}buscar/${dato}`);
+  public listar (): Observable<Calendario[]> {
+    return this.http.get<Calendario[]>(`${this.url}listar/1/2025`);
   }
   
 }

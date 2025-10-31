@@ -56,6 +56,7 @@ export class CalendarioComponent {
   }
 
   ngOnInit(): void {
+    this.generar();
     this.listar();
   }
 
@@ -77,19 +78,15 @@ export class CalendarioComponent {
     });
   }
 
-  buscar() {
-    if (this.textoBusqueda.length === 0) {
-      this.listar();
-    } else {
-      this.calendarioServicio.buscar(this.textoBusqueda).subscribe({
-        next: (response) => {
-          this.calendarios = response;
-        },
-        error: (error) => {
-          window.alert(error.message);
-        }
-      });
-    }
+  generar() {
+    this.calendarioServicio.generar().subscribe({
+      next: (response) => {
+        console.log('Calendario generado', response)
+      },
+      error: (error) => {
+        window.alert(error.message);
+      }
+    });
   }
 
   navegarAtras() {
