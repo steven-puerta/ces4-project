@@ -22,5 +22,17 @@ export class TipoFestivoService {
   public buscar (dato: string): Observable<TipoFestivo[]> {
     return this.http.get<TipoFestivo[]>(`${this.url}buscar/${dato}`);
   }
+
+  public agregar (tipoFestivo: TipoFestivo): Observable<TipoFestivo> {
+    return this.http.post<TipoFestivo>(`${this.url}agregar`, tipoFestivo);
+  }
+
+  public modificar (tipoFestivo: TipoFestivo): Observable<TipoFestivo> {
+    return this.http.put<TipoFestivo>(`${this.url}modificar`, tipoFestivo);
+  }
+
+  public eliminar (id: number): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.url}eliminar/${id}`);
+  }
   
 }

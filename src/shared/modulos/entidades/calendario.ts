@@ -1,13 +1,10 @@
+import { Pais } from "./pais";
+import { Tipo } from "./tipo";
+
 export interface Calendario {
     id: number;
     fecha: string;
-    tipo: {
-        id: number;
-        tipo: string;
-    };
+    tipo: Tipo;
     descripcion: string;
-    pais: {
-        id: number;
-        nombre: string;
-    }; 
+    pais: Pais;
 }
