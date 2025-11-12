@@ -1,1 +1,11 @@
-<p>pais-editar works!</p>
+<div mat-dialog-content>
+    <h2>{{datos.encabezado}}</h2>
+    <mat-form-field style="width: 100%;">
+        <mat-label>País</mat-label>
+        <input matInput [(ngModel)]="datos.pais.nombre">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="datos">Aceptar</button>
+    <button mat-stroked-button color="primary" [mat-dialog-close]="null">Cancelar</button>
+</div>

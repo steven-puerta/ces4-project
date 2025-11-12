@@ -22,5 +22,17 @@ export class PaisService {
   public buscar (dato: string): Observable<Pais[]> {
     return this.http.get<Pais[]>(`${this.url}buscar/${dato}`);
   }
+
+    public agregar (pais: Pais): Observable<Pais> {
+      return this.http.post<Pais>(`${this.url}agregar`, pais);
+    }
+  
+    public modificar (pais: Pais): Observable<Pais> {
+      return this.http.put<Pais>(`${this.url}modificar`, pais);
+    }
+  
+    public eliminar (id: number): Observable<boolean> {
+      return this.http.delete<boolean>(`${this.url}eliminar/${id}`);
+    }
   
 }
