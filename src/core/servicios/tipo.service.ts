@@ -22,4 +22,16 @@ export class TipoService {
   public buscar (dato: string): Observable<Tipo[]> {
     return this.http.get<Tipo[]>(`${this.url}buscar/${dato}`);
   }
+
+  public agregar (tipo: Tipo): Observable<Tipo> {
+    return this.http.post<Tipo>(`${this.url}agregar`, tipo);
+  }
+
+  public modificar (tipo: Tipo): Observable<Tipo> {
+    return this.http.put<Tipo>(`${this.url}modificar`, tipo);
+  }
+
+  public eliminar (id: number): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.url}eliminar/${id}`);
+  }
 }

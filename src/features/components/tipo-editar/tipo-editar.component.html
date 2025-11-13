@@ -1,1 +1,11 @@
-<p>tipo-editar works!</p>
+<div mat-dialog-content>
+    <h2>{{datos.encabezado}}</h2>
+    <mat-form-field style="width: 100%;">
+        <mat-label>Tipo</mat-label>
+        <input matInput [(ngModel)]="datos.tipo.tipo">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="datos">Aceptar</button>
+    <button mat-stroked-button color="primary" [mat-dialog-close]="null">Cancelar</button>
+</div>
