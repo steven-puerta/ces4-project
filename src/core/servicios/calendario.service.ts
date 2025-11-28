@@ -19,8 +19,8 @@ export class CalendarioService {
     return this.http.get<boolean>(`${this.url}generar/${pais}/${anio}`);
   }
 
-  public listar (): Observable<Calendario[]> {
-    return this.http.get<Calendario[]>(`${this.url}listar/1/2025`);
+  public listar (pais: string = '1', anio: string = '2025'): Observable<Calendario[]> {
+    return this.http.get<Calendario[]>(`${this.url}listar/${pais}/${anio}`);
   }
   
 }

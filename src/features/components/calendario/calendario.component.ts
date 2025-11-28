@@ -6,13 +6,17 @@ import { Calendario } from '../../../shared/modulos/entidades/calendario';
 import { CalendarioService } from '../../../core/servicios/calendario.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { PaisService } from '../../../core/servicios/pais.service';
+import { Pais } from '../../../shared/modulos/entidades/pais';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-calendario',
   imports: [
     ReferenciasMaterialModule,
     NgxDatatableModule,
-    FormsModule
+    FormsModule,
+    NgFor
   ],
   templateUrl: './calendario.component.html',
   styleUrl: './calendario.component.css',
@@ -46,18 +50,22 @@ export class CalendarioComponent {
   public calendarioEscogido: Calendario | undefined;
   public indiceCalendarioEscogido : number = -1;
 
+  public paises : Pais[] = [];
+
   public textoBusqueda = '';
 
+  public paisElegido : Pais | undefined ;
+  public anioElegido : number = new Date().getFullYear();
+
   constructor(private calendarioServicio: CalendarioService,
-    private dialogoServicio: MatDialog,
+    private paisServicio: PaisService,
     private router: Router
   ) {
     //
   }
 
   ngOnInit(): void {
-    this.generar();
-    this.listar();
+    this.listarPaises()
   }
 
   escoger(event: any) {
@@ -67,10 +75,11 @@ export class CalendarioComponent {
     }
   }
 
-  listar() {
-    this.calendarioServicio.listar().subscribe({
+  listarPaises() {
+    this.paisServicio.listar().subscribe({
       next: (response) => {
-        this.calendarios = response;
+        this.paises = response;
+        console.log('paises', this.paises);
       },
       error: (error) => {
         window.alert(error.message);
@@ -78,10 +87,22 @@ export class CalendarioComponent {
     });
   }
 
+  public compararPaises( pais1: Pais, pais2: Pais): boolean {
+    return pais1 && pais2 ? pais1.id === pais2.id : pais1 === pais2;
+  }
+
   generar() {
-    this.calendarioServicio.generar().subscribe({
+    this.calendarioServicio.generar(this.paisElegido?.id.toString(), this.anioElegido.toString()).subscribe({
       next: (response) => {
-        console.log('Calendario generado', response)
+        console.log('Calendario generado', response);
+        this.calendarioServicio.listar(this.paisElegido?.id.toString(), this.anioElegido.toString()).subscribe({
+          next: (subResponse) => {
+            this.calendarios = subResponse;
+          },
+          error: (error) => {
+            window.alert(error.message);
+          }
+        })
       },
       error: (error) => {
         window.alert(error.message);

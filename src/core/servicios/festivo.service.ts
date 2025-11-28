@@ -34,5 +34,9 @@ export class FestivoService {
   public eliminar (id: number): Observable<boolean> {
     return this.http.delete<boolean>(`${this.url}eliminar/${id}`);
   }
+
+  public verificar (pais: string = '1', anio: string, mes: string, dia: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.url}verificar/${pais}/${anio}/${mes}/${dia}`);
+  }
   
 }

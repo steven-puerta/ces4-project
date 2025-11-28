@@ -34,6 +34,10 @@ export class LandingComponent {
     this.router.navigate(['/tipo']);
   }
 
+  navegarVerificar() {
+    this.router.navigate(['/verificar']);
+  }
+
   navegarAutores() {
     this.router.navigate(['/autores']);
   }
