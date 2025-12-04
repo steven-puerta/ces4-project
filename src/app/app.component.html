@@ -1,11 +1,37 @@
-<div class="centrar">
-    <div>
-        <div *ngIf="usuarioActual==null" class="centrar-componente">
+<mat-sidenav-container>
+    <mat-sidenav #menuLateral>
+    <mat-nav-list>
+      <div *ngFor="let opcion of opciones">
+          <button mat-icon-button [routerLink]="opcion.ruta" (click)="menuLateral.toggle()" class="menu-boton">
+            {{opcion.titulo}}
+          </button>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class='top-menu'>
+        <div *ngIf="usuarioActual==null"></div>
+        <button *ngIf="usuarioActual" style="margin-left: 20px; margin-top: 20px;" mat-icon-button (click)="menuLateral.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <div *ngIf="usuarioActual==null" style="margin-right: 20px; margin-top: 20px;" class="centrar-componente">
             <button mat-raised-button (click)="login()">
                 <mat-icon>person</mat-icon>
                 Ingresar
             </button>
         </div>
-        <router-outlet></router-outlet>
+        <div *ngIf="usuarioActual!=null" style="margin-right: 20px; margin-top: 20px;">
+            <strong style="margin-right: 20px; margin-top: 20px;">{{usuarioActual!.nombre}}</strong>
+            <button mat-raised-button (click)="logout()">
+                <mat-icon>closed</mat-icon>
+                Log out
+            </button>
+        </div>
     </div>
-</div>
+    <div class="centrar">
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

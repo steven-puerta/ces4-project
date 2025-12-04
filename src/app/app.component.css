@@ -22,3 +22,30 @@
     display: flex; /* Utilizamos flexbox para centrar verticalmente */
     justify-content: center; /* Centrar horizontalmente con flexbox */
 }
+
+mat-sidenav-container {
+    height: calc(100vh);
+}
+
+.menu-boton {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+    border-radius: 10px;
+    background-color: #e8e8e8;
+    margin: 10px 50px 10px 10px;
+    transition: 0.3s;
+}
+
+.menu-boton:hover {
+    color: rgb(41, 14, 66);
+    width: 90%;
+    margin: 10px 50px 10px 15px;
+}
+
+.top-menu {
+    display: flex;
+    justify-content: space-between
+}

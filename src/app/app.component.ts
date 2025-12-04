@@ -1,24 +1,36 @@
 import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { ReferenciasMaterialModule } from '../shared/modulos/referencias-material.module';
 import { MatDialog } from '@angular/material/dialog';
 import { Usuario } from '../shared/modulos/entidades/usuario';
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { UsuarioService } from '../core/servicios/usuario.service';
 import { AutorizacionService } from '../core/servicios/autorizacion.service';
 import { LoginComponent } from '../features/components/login/login.component';
+import { RUTA_DEFAULT } from './app.routes';
 
 @Component({
   selector: 'app-root',
   imports: [
     RouterOutlet,
     ReferenciasMaterialModule,
-    NgIf
+    NgIf,
+    NgFor,
+    RouterModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+
+  public opciones = [
+    { titulo: "Tipo de Festivo", ruta: "tipo-festivo" },
+    { titulo: "Festivo", ruta: "festivo" },
+    { titulo: "País", ruta: "pais" },
+    { titulo: "Calendario", ruta: "calendario" },
+    { titulo: "Tipo", ruta: "tipo" },
+    { titulo: "Verificar", ruta: "verificar" },
+  ];
 
   public usuarioActual:Usuario | null = null;
 
@@ -61,6 +73,12 @@ export class AppComponent {
         window.alert(error);
       }
     });
+  }
+
+  logout() {
+    this.autorizacionServicio.cerrarSesion();
+    this.router.navigate([RUTA_DEFAULT]);
+    window.location.reload();
   }
 
 }

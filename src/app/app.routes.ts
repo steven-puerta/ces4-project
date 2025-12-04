@@ -21,6 +21,5 @@ export const routes: Routes = [
     { path: "pais", component: PaisComponent },
     { path: "calendario", component: CalendarioComponent },
     { path: "tipo", component: TipoComponent },
-    { path: "verificar", component: VerificarFestivoComponent },
-
+    { path: "verificar", component: VerificarFestivoComponent }
 ];
